@@ -1,0 +1,178 @@
+// _cta.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.cta {
+  padding: 3rem $gutter;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle radial glow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse, rgba($text, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    @include container;
+    padding-inline: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: $text;
+    margin-bottom: 3rem;
+  }
+}
+
+.contact {
+  padding-bottom: 2rem;
+  &__band {
+    @include container;
+    padding: 3rem 0;
+    @include flex(row, center, center);
+    position: relative;
+    overflow: hidden;
+
+    @include responsive(tablet) {
+      gap: 2rem;
+    }
+
+    @include responsive(mobile) {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem $gutter;
+    }
+
+    h3 {
+      font-family: $font-display;
+      font-size: clamp(1rem, 2.5vw, 2rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: $text;
+      position: relative;
+      z-index: 1;
+      white-space: nowrap;
+    }
+  }
+
+  // Waveform bars
+  &__waveform {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 60px;
+    flex-shrink: 0;
+
+    @include responsive(mobile) {
+      height: 40px;
+      gap: 3px;
+    }
+    &-bar {
+      border-left: 4px solid rgba($text, 0.5);
+    }
+  }
+
+  &__info {
+    @include container;
+    padding: 2.5rem $gutter;
+    @include flex(row, center, space-between, 2rem);
+
+    @include responsive(tablet) {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
+
+  &__email {
+    font-family: $font-mono;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: color 0.25s $ease;
+    border-right: 1px solid $text;
+    padding-right: 0.5rem;
+    @include hover-underline;
+
+    &:hover { color: $text; }
+  }
+
+  &__social {
+    @include flex(row, center, center, 1.5rem);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.25s $ease, transform 0.25s $ease;
+
+      &:hover {
+        opacity: 0.7;
+        transform: translateY(-2px);
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        
+        @include responsive(mobile) {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  &__phone {
+    font-family: $font-mono;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    padding-left: 0.5rem;
+    border-left: 1px solid $text;
+    @include hover-underline;
+  }
+}
+
+// _footer.scss
+
+.footer {
+  @include container;
+  padding: 1.5rem $gutter;
+  border-top: 1px solid $border;
+
+  &__inner {
+    @include container;
+    @include flex(row, center, space-between);
+
+    @include responsive(mobile) {
+      flex-direction: column;
+      gap: 0.75rem;
+      text-align: center;
+    }
+  }
+
+  &__brand {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  &__copy {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+}

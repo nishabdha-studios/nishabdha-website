@@ -1,0 +1,67 @@
+// _about.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.about {
+  @include container;
+  padding: 4rem 0;
+
+  &__label {
+    @include section-label;
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    @include flex(row, flex-start, space-between, 4rem);
+
+    @include responsive(tablet) {
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+  }
+
+  &__headline {
+    flex: 0 0 auto;
+    width: 40%;
+
+    @include responsive(tablet) {
+      width: 100%;
+    }
+
+    h2 {
+      font-family: $font-display;
+      font-size: clamp(3.5rem, 8vw, 3.5rem);
+      line-height: 1.25;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $text;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    padding-top: 0.5rem;
+
+    &__name {
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+
+      strong {
+        color: $text;
+        font-weight: 500;
+      }
+    }
+
+    p {
+      font-size: clamp(1rem, 1.2vw, 1rem);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-top: 1rem;
+      }
+    }
+  }
+}

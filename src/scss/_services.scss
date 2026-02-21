@@ -1,0 +1,83 @@
+// _services.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services {
+
+  &__inner {
+    @include container;
+    padding: 4rem 0;
+  }
+
+  &__label {
+    @include section-label;
+    margin-bottom: 3rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+
+    @include responsive(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    padding: 2.5rem 0;
+    position: relative;
+    transition: background 0.3s $ease;
+    cursor: default;
+    @include flex(row, start, start, 1.5rem);
+
+    &:nth-child(3n) {
+      border-right: none;
+    }
+
+    &:nth-child(2n) {
+      @include responsive(tablet) {
+        border-right: none;
+      }
+    }
+
+    @include responsive(mobile) {
+      border-right: none;
+    }
+
+    &__number {
+      font-family: $font-display;
+      font-size: 3.5rem;
+      line-height: 0.9;
+      transition: color 0.3s $ease;
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+      font-weight: 700;
+    //   text-shadow: 
+    // 0 0 10px rgba(255, 255, 255, 0.8),
+    // 0 0 20px rgba(255, 255, 255, 0.6),
+    // 0 0 30px rgba(255, 255, 255, 0.4),
+    // 0 0 40px rgba(255, 255, 255, 0.2),
+    // 0 2px 4px rgba(0, 0, 0, 0.5),
+    // 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    &__title {
+      font-size: 1.25rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    &__list {
+      li {
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 1.9;
+        transition: color 0.2s $ease;
+      }
+    }
+  }
+}
