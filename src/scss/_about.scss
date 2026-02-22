@@ -4,7 +4,8 @@
 
 .about {
   @include container;
-  padding: 4rem 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   &__label {
     @include section-label;
@@ -35,6 +36,10 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: $text;
+
+      @include responsive(tablet) {
+        text-align: center;
+      }
     }
   }
 

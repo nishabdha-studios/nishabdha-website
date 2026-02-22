@@ -46,13 +46,7 @@
     position: relative;
     overflow: hidden;
 
-    @include responsive(tablet) {
-      gap: 2rem;
-    }
-
     @include responsive(mobile) {
-      flex-direction: column;
-      gap: 1.5rem;
       padding: 2rem $gutter;
     }
 
@@ -107,6 +101,9 @@
     @include hover-underline;
 
     &:hover { color: $text; }
+    @include responsive(mobile) {
+      border: none;
+    }
   }
 
   &__social {
@@ -142,6 +139,9 @@
     padding-left: 0.5rem;
     border-left: 1px solid $text;
     @include hover-underline;
+    @include responsive(mobile) {
+      border: none;
+    }
   }
 }
 

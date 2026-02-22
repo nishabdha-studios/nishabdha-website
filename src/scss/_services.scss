@@ -6,12 +6,12 @@
 
   &__inner {
     @include container;
-    padding: 4rem 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   &__label {
     @include section-label;
-    margin-bottom: 3rem;
   }
 
   &__grid {
@@ -25,6 +25,7 @@
 
     @include responsive(mobile) {
       grid-template-columns: 1fr;
+      align-items: center;
     }
   }
 
@@ -46,7 +47,9 @@
     }
 
     @include responsive(mobile) {
-      border-right: none;
+      // @include flex(column, start, start, 1.5rem);
+      // justify-self: center;
+      // text-align: center;
     }
 
     &__number {
@@ -63,6 +66,10 @@
     // 0 0 40px rgba(255, 255, 255, 0.2),
     // 0 2px 4px rgba(0, 0, 0, 0.5),
     // 0 4px 8px rgba(0, 0, 0, 0.3);
+      // @include responsive(mobile) {
+      //  width: 100%;
+      //   text-align: center;
+      // }
     }
 
     &__title {
