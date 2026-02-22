@@ -1,0 +1,27 @@
+// Colors
+$bg: #1a1a1a;
+$text: #f2f2f2;
+$accent: #ffffff;
+$muted: #888888;
+$border: rgba(242, 242, 242, 0.12);
+$gold: #c8a96e;
+
+// Typography
+$font-display: 'Open Sans', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+$font-mono: 'Open Sans', sans-serif;
+
+// Spacing
+$section-pad: clamp(5rem, 10vw, 9rem);
+$container-max: 1200px;
+$gutter: clamp(1.5rem, 5vw, 3rem);
+
+// Transitions
+$ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1280px;

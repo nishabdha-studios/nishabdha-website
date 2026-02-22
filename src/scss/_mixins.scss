@@ -1,0 +1,72 @@
+// _mixins.scss
+@use 'variables' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $gutter;
+}
+
+@mixin flex($dir: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 { gap: $gap; }
+}
+
+@mixin grid($cols: 1, $gap: 2rem) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+@mixin responsive($bp) {
+  @if $bp == mobile {
+    @media (max-width: #{$mobile}) { @content; }
+  } @else if $bp == tablet {
+    @media (max-width: #{$tablet}) { @content; }
+  } @else if $bp == desktop {
+    @media (max-width: #{$desktop}) { @content; }
+  } @else if $bp == wide {
+    @media (min-width: #{$wide}) { @content; }
+  }
+}
+
+@mixin section-label {
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@mixin hover-underline {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $text;
+    transition: width 0.3s $ease;
+  }
+  &:hover::after { width: 100%; }
+}
+
+@mixin grain-overlay {
+  &::before {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+}

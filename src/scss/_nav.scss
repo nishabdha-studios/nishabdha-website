@@ -1,0 +1,128 @@
+// _nav.scss
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.5rem $gutter;
+  transition: background 0.4s $ease, backdrop-filter 0.4s $ease;
+  
+  &.scrolled {
+    background: rgba($bg, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid $border;
+  }
+
+  .nav-wrapper {
+    @include flex(row, center, space-between);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    img {
+      width: 150px;
+    }
+
+    // Placeholder text if no logo image
+    span {
+      font-family: $font-display;
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      color: $text;
+    }
+  }
+
+  &__links {
+    @include flex(row, center, flex-end, 2.5rem);
+
+    @include responsive(tablet) {
+      display: none;
+    }
+
+    a {
+      font-family: $font-mono;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba($text, 0.75);
+      font-weight: 500;
+      transition: color 0.25s $ease;
+      @include hover-underline;
+
+      &:hover {
+        color: $text;
+      }
+    }
+  }
+
+  // Mobile hamburger
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+
+    @include responsive(tablet) {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: $text;
+      transition: transform 0.3s $ease, opacity 0.3s $ease;
+    }
+
+    &.open {
+      span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    }
+  }
+
+  // Mobile menu
+  &__mobile {
+    position: fixed;
+    inset: 0;
+    background: $bg;
+    z-index: 99;
+    @include flex(column, center, center, 3rem);
+    transform: translateY(-100%);
+    transition: transform 0.5s $ease-out;
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    a {
+      font-family: $font-display;
+      font-size: 3rem;
+      letter-spacing: 0.05em;
+      color: $text;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s $ease, transform 0.4s $ease, color 0.25s $ease;
+
+      &:hover { color: $muted; }
+    }
+
+    &.open a {
+      opacity: 1;
+      transform: translateY(0);
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{0.1 + ($i * 0.07)}s;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+// main.scss - Nishabdha Creative Studio
+
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset' as *;
+@use 'nav' as *;
+@use 'hero' as *;
+@use 'about' as *;
+@use 'services' as *;
+@use 'how-we-work' as *;
+@use 'cta-contact' as *;
+
+// ─── Scroll reveal utilities ─────────────────────────────────────────────────
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s $ease-out, transform 0.7s $ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s $ease-out, transform 0.6s $ease-out;
+  }
+
+  &.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.08}s;
+      }
+    }
+  }
+}
+
+// ─── Grain overlay ────────────────────────────────────────────────────────────
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+// Utility: fade-in on scroll
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s $ease-out, transform 0.7s $ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger children
+.reveal-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s $ease-out, transform 0.6s $ease-out;
+  }
+
+  &.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.08}s;
+      }
+    }
+  }
+}
+
+// Grain overlay on body
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+}
