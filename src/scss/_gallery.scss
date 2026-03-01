@@ -1,0 +1,108 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.studio_gallery {
+    @include container;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-family: $font-display;
+    &__heading {
+        font-size: clamp(1rem, 7vw, 2rem);
+        display: flex;
+        justify-content: center;
+        h2 {
+            max-width: 450px;
+            text-align: center;
+            padding: 8rem 0;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        &-card {
+            display: flex;
+            gap: 1rem;
+            border-top: 2px solid $border;
+            border-bottom: 2px solid $border;
+            border-radius: 0.1rem;
+            padding: 8rem 0;
+
+            @include responsive(tablet) {
+                flex-direction: column;
+            }
+
+            &:nth-child(2n) {
+                flex-direction: row-reverse;
+
+                @include responsive(tablet) {
+                    flex-direction: column;
+                }
+
+                .studio_gallery__content-card-text {
+                    .studio_gallery__content-card-text-title, .studio_gallery__content-card-text-description {
+                        text-align: right;
+                        @include responsive(tablet) {
+                            text-align: center;
+                        }
+                    }
+                    .studio_gallery__content-card-text-description {
+                        padding-left: 0;
+                        padding-right: 2rem;
+                        padding: 0;
+                    }
+                }
+            }
+
+            &-text {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                @include responsive(tablet) {
+                    width: 100%;
+                }
+                &-title {
+                    font-size: clamp(1rem, 7vw, 2.5rem);
+                    line-height: 1.25;
+                    letter-spacing: 0.08em;
+                    margin-bottom: 4rem;
+                    position: relative;
+                    top: -3rem;
+
+                    @include responsive(tablet) {
+                        top: 0;
+                        margin-bottom: 2rem;
+                        text-align: center;
+                    }
+                }
+
+                &-description {
+                    color: $muted;
+                    font-size: clamp(0.75rem, 2vw, 1.25rem);
+                    font-weight: 500;
+                    padding-left: 2rem;
+                    padding-right: 0;
+
+                     @include responsive(tablet) {
+                        text-align: center;
+                        padding: 0;
+                    }
+                }
+            }
+
+            &-img {
+                width: 50%;
+                @include responsive(tablet) {
+                    width: 100%;
+                }
+                img {
+                    border-radius: 1rem;
+                    max-height: 25rem;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

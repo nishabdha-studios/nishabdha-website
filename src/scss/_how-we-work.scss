@@ -297,4 +297,17 @@
       }
     }
   }
+
+  .portfolio {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    &__link {
+      display: flex;
+      gap: 0.2rem;
+      align-items: center;
+    }
+  }
 }
