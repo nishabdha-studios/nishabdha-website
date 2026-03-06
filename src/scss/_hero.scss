@@ -9,6 +9,10 @@
   @include flex(column, center, flex-end);
   overflow: hidden;
 
+   @include responsive(tablet) {
+        background-color: #000;
+    }
+
   &__media {
     position: absolute;
     inset: 0;
@@ -20,7 +24,7 @@
       height: 100%;
       object-fit: cover;
       @include responsive(tablet) {
-        object-fit: unset;
+        object-fit: contain;
       }
     }
 
